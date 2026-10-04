@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KEBABRIN – Kebab Panggang Segar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#3a2820;--bg2:#4a3329;--glass:rgba(255,255,255,.08);--peach:#e6b48a;--teal:#6fa8a3;--text:#d9c3b0;--dim:#a68e7c;--dark:#2a1b15}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:radial-gradient(circle at 80% 0,#5a4034 0,transparent 50%),var(--bg);color:var(--text);font:400 16px/1.6 Inter,system-ui,sans-serif;overflow-x:hidden}
+button{font:inherit;cursor:pointer;border:0;color:inherit}
+:focus-visible{outline:2px solid var(--peach);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:Montserrat,Inter,sans-serif;color:var(--peach);line-height:1.15}
+header{position:fixed;top:0;left:0;right:0;z-index:50;padding:16px 0;transition:background .3s}
+header.sc{background:rgba(42,27,21,.85);backdrop-filter:blur(10px)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font:800 26px Montserrat,sans-serif;color:var(--peach);letter-spacing:1px;text-decoration:none}
+nav{display:flex;gap:6px;background:var(--glass);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:8px 14px;backdrop-filter:blur(8px)}
+nav a{color:var(--text);text-decoration:none;font-size:14px;padding:6px 14px;border-radius:14px;transition:background .25s,color .25s}
+nav a:hover{background:rgba(255,255,255,.1);color:#fff}
+.btn{background:var(--teal);color:#1f2b2a;font-weight:600;padding:13px 34px;border-radius:30px;transition:transform .25s,filter .25s;text-decoration:none;display:inline-block}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.btn.sm{padding:9px 20px;font-size:14px}
+.cartb{position:relative;background:var(--glass);width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:18px}
+.cartb b{position:absolute;top:-4px;right:-4px;background:var(--teal);color:#1f2b2a;font-size:11px;min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center}
+.right{display:flex;gap:12px;align-items:center}
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:20px;padding-top:110px}
+.hero h1{font-size:clamp(34px,5vw,56px);margin-bottom:24px}
+.hero p{max-width:460px;margin-bottom:32px;font-size:17px}
+.vis{position:relative;height:520px}
+.vis svg{position:absolute;filter:drop-shadow(0 30px 30px rgba(0,0,0,.4))}
+.k1{width:230px;left:5%;top:90px;transform:rotate(-8deg);animation:fl 6s ease-in-out infinite}
+.k2{width:290px;right:0;top:20px;transform:rotate(10deg);animation:fl 7s ease-in-out -2s infinite}
+.dot{position:absolute;border-radius:50%;background:var(--peach);opacity:.7;animation:fl 5s ease-in-out infinite}
+@keyframes fl{50%{translate:0 -16px}}
+.sec{padding:80px 0}
+.sec>.wrap>h2{text-align:center;font-size:clamp(26px,3.5vw,36px);margin-bottom:40px}
+.chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:-16px 0 36px}
+.chip{background:var(--glass);padding:8px 20px;border-radius:20px;font-size:14px;transition:background .25s}
+.chip.on{background:var(--teal);color:#1f2b2a;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:28px;padding-top:50px}
+.card{background:var(--glass);border:1px solid rgba(255,255,255,.07);border-radius:26px;padding:0 20px 20px;text-align:center;position:relative;transition:transform .3s,background .3s}
+.card:hover{transform:translateY(-6px);background:rgba(255,255,255,.12)}
+.card .im{width:120px;height:120px;margin:-50px auto 8px;border-radius:24px;background:var(--bg2);display:grid;place-items:center;overflow:hidden;position:relative}
+.card .im img{width:100%;height:100%;object-fit:cover}
+.card .im svg{width:70px}
+.rt{position:absolute;right:8px;bottom:6px;background:#fff;color:#222;font:600 11px Inter;padding:1px 6px;border-radius:6px}
+.card h3{font-size:19px;margin-bottom:6px}
+.card p{font-size:13px;color:var(--dim);min-height:58px}
+.card .row{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font:600 18px Montserrat}
+.add{width:38px;height:38px;border-radius:50%;background:var(--teal);color:#1f2b2a;font-size:22px;line-height:1;transition:transform .2s}
+.add:hover{transform:scale(1.12) rotate(90deg)}
+.note{text-align:center;color:var(--dim);font-size:14px;grid-column:1/-1}
+.about{display:grid;grid-template-columns:1fr 300px 1fr;gap:30px 40px;align-items:center}
+.ft{position:relative;padding-left:56px}
+.ft i{position:absolute;left:0;top:-20px;font:800 90px Montserrat;color:rgba(255,255,255,.07);font-style:normal}
+.ft h3{font-size:20px;margin-bottom:8px;position:relative}
+.ft p{font-size:14px;color:var(--dim);position:relative}
+.mid{grid-row:span 2;text-align:center;grid-column:2;grid-row:1/3}
+.mid svg{width:210px;animation:fl 6s ease-in-out infinite;filter:drop-shadow(0 25px 25px rgba(0,0,0,.4))}
+.mid .btn{display:block;margin-top:24px}
+.promo{background:var(--glass);border:1px solid rgba(255,255,255,.07);border-radius:30px;padding:44px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.promo h2{font-size:clamp(22px,3vw,30px);max-width:420px}
+.promo .btn{background:var(--peach)}
+#rec{margin-top:14px;color:var(--text)}
+footer{text-align:center;padding:30px 24px 50px;color:var(--dim);font-size:14px}
+.rv{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .3s;z-index:90}
+.ov.on{opacity:1;pointer-events:auto}
+aside{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:var(--dark);z-index:100;transform:translateX(105%);transition:transform .45s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column;padding:24px}
+aside.on{transform:none}
+aside h2{font-size:22px;display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.x{background:none;font-size:26px;color:var(--text)}
+#items{flex:1;overflow:auto;margin-bottom:12px}
+.it{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:14px}
+.q{display:flex;align-items:center;gap:8px}
+.q button{width:26px;height:26px;border-radius:50%;background:var(--glass)}
+.tot{display:flex;justify-content:space-between;font:800 18px Montserrat;color:var(--peach);margin-bottom:12px}
+aside input,aside textarea{width:100%;background:var(--glass);border:1px solid rgba(255,255,255,.1);color:#fff;padding:10px 14px;border-radius:12px;margin-bottom:8px;font:inherit;font-size:14px}
+aside textarea{resize:none;height:60px}
+aside .btn{width:100%;text-align:center}
+aside .btn:disabled{opacity:.5;cursor:not-allowed}
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,120px);background:var(--teal);color:#1f2b2a;font-weight:600;padding:12px 24px;border-radius:24px;z-index:200;transition:transform .4s;max-width:90%}
+.toast.on{transform:translate(-50%,0)}
+.toast.err{background:#d9776a}
+@media(max-width:900px){nav{display:none}.hero{grid-template-columns:1fr;text-align:center;padding-top:100px}.hero p{margin-inline:auto}.vis{height:380px}.k1{width:150px}.k2{width:190px}.about{grid-template-columns:1fr}.mid{grid-column:1;grid-row:auto;order:-1}.promo{padding:28px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important;scroll-behavior:auto}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="kb" viewBox="0 0 120 170"><path d="M30 60 L90 60 L80 160 Q60 168 40 160Z" fill="#c9ccd0"/><path d="M40 75 L45 158M60 72 L60 164M80 75 L75 158" stroke="#9da1a6" stroke-width="3"/><path d="M14 66 Q10 22 60 14 Q110 22 106 66 Q60 84 14 66Z" fill="#e8c48f"/><path d="M22 52 Q30 30 60 28 Q90 30 98 52 Q60 66 22 52Z" fill="#9bbf6a"/><circle cx="46" cy="40" r="7" fill="#d9503f"/><circle cx="72" cy="38" r="6" fill="#d9503f"/><path d="M30 50 Q60 60 92 50" stroke="#f6efe0" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M28 62 Q60 76 92 62 L90 70 Q60 82 30 70Z" fill="#8a5a3a"/></symbol></defs></svg>
+
+<header id="hd"><div class="wrap bar">
+<a class="logo" href="#home">KEBABRIN</a>
+<nav aria-label="Menu utama"><a href="#home">Beranda</a><a href="#menu">Menu</a><a href="#about">Tentang</a><a href="#cari">Rekomendasi</a></nav>
+<div class="right"><button class="cartb" id="cartBtn" aria-label="Buka keranjang">🛒<b id="cnt">0</b></button><a class="btn sm" href="#menu">Pesan sekarang</a></div>
+</div></header>
+
+<main>
+<section class="wrap hero" id="home">
+<div class="rv"><h1>Temukan rasa kebab terbaik di setiap gigitan!</h1>
+<p>Bagi kami kebab bukan sekadar makanan, tapi seni. Daging dipanggang segar, sayur renyah, dan saus rahasia yang bikin kamu ingin nambah.</p>
+<a class="btn" href="#menu">Pilih kebab</a></div>
+<div class="vis rv" style="--d:.2s" aria-hidden="true">
+<svg class="k1" viewBox="0 0 120 170"><use href="#kb"/></svg>
+<svg class="k2" viewBox="0 0 120 170"><use href="#kb"/></svg>
+<span class="dot" style="width:14px;height:14px;left:48%;top:30px"></span><span class="dot" style="width:9px;height:9px;left:30%;top:60px;animation-delay:-1s"></span><span class="dot" style="width:18px;height:18px;right:6%;bottom:70px;animation-delay:-3s"></span>
+</div>
+</section>
+
+<section class="sec" id="menu"><div class="wrap">
+<h2 class="rv">Menu favorit kami</h2>
+<div class="chips rv" id="chips"></div>
+<div class="grid" id="grid"><p class="note">Memuat menu…</p></div>
+</div></section>
+
+<section class="sec" id="about"><div class="wrap">
+<h2 class="rv">KEBABRIN itu</h2>
+<div class="about">
+<div class="ft rv"><i>1</i><h3>Bahan segar setiap hari</h3><p>Daging dan sayur kami pilih dan disiapkan setiap pagi. Tidak ada bahan stok lama, hanya rasa yang segar dan jujur.</p></div>
+<div class="mid rv" style="--d:.15s"><svg viewBox="0 0 120 170" aria-hidden="true"><use href="#kb"/></svg><a class="btn" href="#menu">Pesan</a></div>
+<div class="ft rv" style="--d:.1s"><i>3</i><h3>Disesuaikan dengan seleranmu</h3><p>Mau pedas, tanpa bawang, atau tambah keju? Tulis di catatan pesanan dan kami buatkan sesuai permintaan.</p></div>
+<div class="ft rv"><i>2</i><h3>Suasana hangat dan nyaman</h3><p>Aroma panggangan, pelayanan ramah, dan porsi yang pas untuk makan santai bersama teman atau keluarga.</p></div>
+<div class="ft rv" style="--d:.1s"><i>4</i><h3>Juru panggang berpengalaman</h3><p>Tim kami terbiasa memanggang dengan api yang tepat, sehingga daging empuk dan matang merata.</p></div>
+</div></div></section>
+
+<section class="sec" id="cari"><div class="wrap"><div class="promo rv">
+<div><h2>Cari tahu kebab mana yang paling cocok untukmu</h2><div id="rec" aria-live="polite"></div></div>
+<div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" data-r="pedas">Suka pedas</button><button class="btn" data-r="biasa">Tidak pedas</button></div>
+</div></div></section>
+</main>
+<footer>© <span id="yr"></span> KEBABRIN · Buka setiap hari 10.00–22.00</footer>
+
+<div class="ov" id="ov"></div>
+<aside id="cart" aria-label="Keranjang" aria-hidden="true">
+<h2>Keranjang <button class="x" id="close" aria-label="Tutup">×</button></h2>
+<div id="items"></div>
+<div class="tot"><span>Total</span><span id="total">Rp 0</span></div>
+<form id="f" novalidate>
+<input id="nm" placeholder="Nama lengkap" autocomplete="name" maxlength="60">
+<input id="tp" placeholder="Nomor WhatsApp" inputmode="tel" autocomplete="tel" maxlength="16">
+<input id="al" placeholder="Alamat pengantaran" autocomplete="street-address" maxlength="200">
+<textarea id="ct" placeholder="Catatan (contoh: tanpa bawang)" maxlength="150"></textarea>
+<button class="btn" id="send" type="submit">Kirim pesanan</button>
+</form></aside>
+<div class="toast" id="toast" role="status"></div>
+<script src="app.js"></script>
+</body>
+</html>
